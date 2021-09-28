@@ -24,6 +24,6 @@ LARGE FILE PROCESSOR: Aim is to build a system which is able to handle long runn
 -> First I wanted to implement the programm purly using the JAVA and I achieved it by implementing the multithreading. but I ran out of the time.
 -> Currently created the main table and inserting all the data directly into the table and used multithreading function to achieve some 70% of the goal.
 
-5. What would you improve if given more days
+5. What would you improve if given more days:-
 -> Use multiple tables along with the multithreading to work efficiently and in optimally ["DIVIDE AND CONQUER"].
 
