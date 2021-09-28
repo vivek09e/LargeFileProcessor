@@ -1,6 +1,7 @@
 # PostManAssignment
 LARGE FILE PROCESSOR: Aim is to build a system which is able to handle long running processes in a distributed fashion.
 1. Steps to run your code:-
+  -> Implemented 2 ways to implement the dataone with simple but time consuming other is with Multithreading.
   -> Created the POJO class of 'product.csv' for the better handling of the flow of the data throughout the program.
   -> Created an arraylist of the POJO class to get the data from the csv file.
   -> Created a Multithreaded function to insert multiple batches of data into the DATABASE at the same instance.
