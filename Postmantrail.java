@@ -50,12 +50,10 @@ class JdbcConnection {
  	        	if(incr==1000){
  	        		System.out.println(totSize+" : "+"Batch ecxcuted");
  	        		preparedStatement.executeBatch();
- 	        		//preparedStatement.clearBatch();
  	        		connection.commit();
  	        		incr=0;
  	        	}else if (size==totSize){
  	        		preparedStatement.executeBatch();
- 	        		//preparedStatement.clearBatch();
  	        		connection.setAutoCommit(true);
  	        	}
  	        }
@@ -80,19 +78,14 @@ public class Postmantrail implements Runnable {
          
         Iterator<Product> itr =  Productlist.iterator();
         while(itr.hasNext()){
-        	Product emp = itr.next();
-            //System.out.println(Thread.currentThread().getName()+" : "+emp);
-             
+        	Product emp = itr.next();           
                 jdbcConnection.insertValues(emp,Productlist.size());
              
              
         }
     }
-    /**
-     * @param args
-     */
+    
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         Postmantrail employeeThread =  new Postmantrail();
          String line = ""; 
  		 String splitBy = ",";    
@@ -100,41 +93,40 @@ public class Postmantrail implements Runnable {
          try
          {
 			{
-				//Creating BufferedReader object br to read the CSV file!!
+				
 				BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Vivek\\Documents\\Postman\\products.csv")); 
-				while ((line = br.readLine()) != null)   //To process every single line in csv one by one!!  
+				while ((line = br.readLine()) != null)     
 					{  
 						if(iter == 0)
 						{	
-							//For first iteration incrementing the iter value to skip the Header Line of the CSV!!
+						
 							iter++;  
 							continue;
 						}
 						
-						//Creating the id1 the pojo class object to set the data!!
+						
 						Product id1=new Product();
 			
-						//Saving the every line separated by "," in the array of string name a!!   	
+					  	
 						String[] a = line.split(splitBy);
-						// using comma as separator
+					
 						
 						if(a.length<3)
 						{
 							Postmantrail.Productlist.get(Postmantrail.Productlist.size() - 1).setDescription(Postmantrail.Productlist.get(Postmantrail.Productlist.size() - 1).getDescription()+" "+line);
-							//System.out.println(line);
+							
 							
 						}
 						else
 						{
-						//Storing the Business_code in pojo object!! 
+						 
 						if(a[0].isEmpty())
 							id1.setName(null);
 						else
 							id1.setName(a[0]);
 			
-						//Storing the Cust_number in pojo object!!
+						
 						id1.setSku(a[1]);
-						//Storing the Name_customer in pojo object!!
 						if(a[2].isEmpty())
 							id1.setDescription(null);
 						else
@@ -142,17 +134,13 @@ public class Postmantrail implements Runnable {
 			
 						Postmantrail.Productlist.add(id1);
 						System.out.println("NAME: "+Postmantrail.Productlist.get(Postmantrail.Productlist.size() - 1).getName()+", SKU:"+Postmantrail.Productlist.get(Postmantrail.Productlist.size() - 1).getSku()+", DESCRIPTION "+Postmantrail.Productlist.get(Postmantrail.Productlist.size() - 1).getDescription());
-
-						//Incrementing the count as the pojo object is added!!
 						count++;
 						}
 						
 					}
 				
-				//Closing the BufferReader object After reading all the Rows in Csv.
-				br.close();
 				
-				//Printing the Number of Rows Added in the Arrlist!!
+				br.close();
 				System.out.print("Total Number Of Rows in CSV Exculding Header Row: "+count+"\n");
 			}
          }
