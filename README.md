@@ -1,4 +1,4 @@
-# PostManAssignment
+# Large File Processor.
 LARGE FILE PROCESSOR: Aim is to build a system which is able to handle long running processes in a distributed fashion.
 1. Steps to run your code:-
   -> Implemented 2 ways to implement the dataone with simple but time consuming other is with Multithreading.
